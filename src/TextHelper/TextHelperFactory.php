@@ -1,17 +1,17 @@
 <?php
 /**
- * Build voice applications for Amazon Alexa with phlexa, PHP and Zend\Expressive
+ * Build voice applications for Amazon Alexa with phlexa, PHP and Mezzio
  *
  * @author     Ralf Eggert <ralf@travello.audio>
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @link       https://github.com/phoice/phlexa-expressive
+ * @link       https://github.com/phoice/phlexa-mezzio
  * @link       https://www.phoice.tech/
  * @link       https://www.travello.audio/
  */
 
 declare(strict_types=1);
 
-namespace PhlexaExpressive\TextHelper;
+namespace PhlexaMezzio\TextHelper;
 
 use Interop\Container\ContainerInterface;
 use Phlexa\Configuration\SkillConfiguration;
@@ -19,12 +19,12 @@ use Phlexa\Configuration\SkillConfigurationInterface;
 use Phlexa\TextHelper\TextHelper;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Class TextHelperFactory
  *
- * @package PhlexaExpressive\TextHelper
+ * @package PhlexaMezzio\TextHelper
  */
 class TextHelperFactory implements FactoryInterface
 {

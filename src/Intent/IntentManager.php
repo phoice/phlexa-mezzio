@@ -1,17 +1,17 @@
 <?php
 /**
- * Build voice applications for Amazon Alexa with phlexa, PHP and Zend\Expressive
+ * Build voice applications for Amazon Alexa with phlexa, PHP and Mezzio
  *
  * @author     Ralf Eggert <ralf@travello.audio>
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @link       https://github.com/phoice/phlexa-expressive
+ * @link       https://github.com/phoice/phlexa-mezzio
  * @link       https://www.phoice.tech/
  * @link       https://www.travello.audio/
  */
 
 declare(strict_types=1);
 
-namespace PhlexaExpressive\Intent;
+namespace PhlexaMezzio\Intent;
 
 use Phlexa\Intent\AudioPlayer\PlaybackFinishedIntent;
 use Phlexa\Intent\AudioPlayer\PlaybackNearlyFinishedIntent;
@@ -25,13 +25,13 @@ use Phlexa\Intent\StopIntent;
 use Phlexa\Intent\System\ExceptionEncountered;
 use Phlexa\Request\RequestType\LaunchRequestType;
 use Phlexa\Request\RequestType\SessionEndedRequestType;
-use Zend\ServiceManager\AbstractPluginManager;
-use Zend\ServiceManager\Exception\InvalidServiceException;
+use Laminas\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\Exception\InvalidServiceException;
 
 /**
  * Class IntentManager
  *
- * @package PhlexaExpressive\Intent
+ * @package PhlexaMezzio\Intent
  */
 class IntentManager extends AbstractPluginManager
 {

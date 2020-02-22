@@ -1,17 +1,17 @@
 <?php
 /**
- * Build voice applications for Amazon Alexa with phlexa, PHP and Zend\Expressive
+ * Build voice applications for Amazon Alexa with phlexa, PHP and Mezzio
  *
  * @author     Ralf Eggert <ralf@travello.audio>
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @link       https://github.com/phoice/phlexa-expressive
+ * @link       https://github.com/phoice/phlexa-mezzio
  * @link       https://www.phoice.tech/
  * @link       https://www.travello.audio/
  */
 
 declare(strict_types=1);
 
-namespace PhlexaExpressive;
+namespace PhlexaMezzio;
 
 use Phlexa\Application\AlexaApplication;
 use Phlexa\Configuration\SkillConfiguration;
@@ -21,30 +21,30 @@ use Phlexa\Request\Certificate\CertificateValidator;
 use Phlexa\Response\AlexaResponse;
 use Phlexa\Session\SessionContainer;
 use Phlexa\TextHelper\TextHelper;
-use PhlexaExpressive\Handler\HtmlPageHandler;
-use PhlexaExpressive\Handler\HtmlPageHandlerFactory;
-use PhlexaExpressive\Handler\SkillHandler;
-use PhlexaExpressive\Handler\SkillHandlerFactory;
-use PhlexaExpressive\Application\AlexaApplicationFactory;
-use PhlexaExpressive\Intent\IntentManager;
-use PhlexaExpressive\Intent\IntentManagerFactory;
-use PhlexaExpressive\Middleware\CheckApplicationMiddleware;
-use PhlexaExpressive\Middleware\CheckApplicationMiddlewareFactory;
-use PhlexaExpressive\Middleware\ConfigureSkillMiddleware;
-use PhlexaExpressive\Middleware\ConfigureSkillMiddlewareFactory;
-use PhlexaExpressive\Middleware\LogAlexaRequestMiddleware;
-use PhlexaExpressive\Middleware\LogAlexaRequestMiddlewareFactory;
-use PhlexaExpressive\Middleware\SetLocaleMiddleware;
-use PhlexaExpressive\Middleware\SetLocaleMiddlewareFactory;
-use PhlexaExpressive\Middleware\ValidateCertificateMiddleware;
-use PhlexaExpressive\Middleware\ValidateCertificateMiddlewareFactory;
-use PhlexaExpressive\Request\AlexaRequestFactory;
-use PhlexaExpressive\Request\Certificate\CertificateLoaderFactory;
-use PhlexaExpressive\Request\Certificate\CertificateValidatorFactory;
-use PhlexaExpressive\Response\AlexaResponseFactory;
-use PhlexaExpressive\Session\SessionContainerFactory;
-use PhlexaExpressive\TextHelper\TextHelperFactory;
-use Zend\ServiceManager\Factory\InvokableFactory;
+use PhlexaMezzio\Handler\HtmlPageHandler;
+use PhlexaMezzio\Handler\HtmlPageHandlerFactory;
+use PhlexaMezzio\Handler\SkillHandler;
+use PhlexaMezzio\Handler\SkillHandlerFactory;
+use PhlexaMezzio\Application\AlexaApplicationFactory;
+use PhlexaMezzio\Intent\IntentManager;
+use PhlexaMezzio\Intent\IntentManagerFactory;
+use PhlexaMezzio\Middleware\CheckApplicationMiddleware;
+use PhlexaMezzio\Middleware\CheckApplicationMiddlewareFactory;
+use PhlexaMezzio\Middleware\ConfigureSkillMiddleware;
+use PhlexaMezzio\Middleware\ConfigureSkillMiddlewareFactory;
+use PhlexaMezzio\Middleware\LogAlexaRequestMiddleware;
+use PhlexaMezzio\Middleware\LogAlexaRequestMiddlewareFactory;
+use PhlexaMezzio\Middleware\SetLocaleMiddleware;
+use PhlexaMezzio\Middleware\SetLocaleMiddlewareFactory;
+use PhlexaMezzio\Middleware\ValidateCertificateMiddleware;
+use PhlexaMezzio\Middleware\ValidateCertificateMiddlewareFactory;
+use PhlexaMezzio\Request\AlexaRequestFactory;
+use PhlexaMezzio\Request\Certificate\CertificateLoaderFactory;
+use PhlexaMezzio\Request\Certificate\CertificateValidatorFactory;
+use PhlexaMezzio\Response\AlexaResponseFactory;
+use PhlexaMezzio\Session\SessionContainerFactory;
+use PhlexaMezzio\TextHelper\TextHelperFactory;
+use Laminas\ServiceManager\Factory\InvokableFactory;
 
 /**
  * Class ConfigProvider

@@ -1,17 +1,17 @@
 <?php
 /**
- * Build voice applications for Amazon Alexa with phlexa, PHP and Zend\Expressive
+ * Build voice applications for Amazon Alexa with phlexa, PHP and Mezzio
  *
  * @author     Ralf Eggert <ralf@travello.audio>
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @link       https://github.com/phoice/phlexa-expressive
+ * @link       https://github.com/phoice/phlexa-mezzio
  * @link       https://www.phoice.tech/
  * @link       https://www.travello.audio/
  */
 
 declare(strict_types=1);
 
-namespace PhlexaExpressive\Handler;
+namespace PhlexaMezzio\Handler;
 
 use Exception;
 use InvalidArgumentException;
@@ -20,12 +20,12 @@ use Phlexa\Request\Exception\BadRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Diactoros\Response\JsonResponse;
+use Laminas\Diactoros\Response\JsonResponse;
 
 /**
  * Class SkillHandler
  *
- * @package PhlexaExpressive\Handler
+ * @package PhlexaMezzio\Handler
  */
 class SkillHandler implements RequestHandlerInterface
 {

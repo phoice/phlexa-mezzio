@@ -1,20 +1,20 @@
 <?php
 /**
- * Build voice applications for Amazon Alexa with phlexa, PHP and Zend\Expressive
+ * Build voice applications for Amazon Alexa with phlexa, PHP and Mezzio
  *
  * @author     Ralf Eggert <ralf@travello.audio>
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @link       https://github.com/phoice/phlexa-expressive
+ * @link       https://github.com/phoice/phlexa-mezzio
  * @link       https://www.phoice.tech/
  * @link       https://www.travello.audio/
  */
 
 declare(strict_types=1);
 
-namespace PhlexaExpressiveTest\Middleware;
+namespace PhlexaMezzioTest\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
-use PhlexaExpressive\Middleware\LogAlexaRequestMiddleware;
+use PhlexaMezzio\Middleware\LogAlexaRequestMiddleware;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -26,7 +26,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 /**
  * Class LogAlexaRequestMiddlewareTest
  *
- * @package PhlexaExpressiveTest\Middleware
+ * @package PhlexaMezzioTest\Middleware
  */
 class LogAlexaRequestMiddlewareTest extends TestCase
 {

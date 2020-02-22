@@ -1,32 +1,32 @@
 <?php
 /**
- * Build voice applications for Amazon Alexa with phlexa, PHP and Zend\Expressive
+ * Build voice applications for Amazon Alexa with phlexa, PHP and Mezzio
  *
  * @author     Ralf Eggert <ralf@travello.audio>
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @link       https://github.com/phoice/phlexa-expressive
+ * @link       https://github.com/phoice/phlexa-mezzio
  * @link       https://www.phoice.tech/
  * @link       https://www.travello.audio/
  */
 
 declare(strict_types=1);
 
-namespace PhlexaExpressive\Request\Certificate;
+namespace PhlexaMezzio\Request\Certificate;
 
 use Interop\Container\ContainerInterface;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\Certificate\CertificateLoader;
 use Phlexa\Request\Certificate\CertificateValidator;
 use Phlexa\Request\Certificate\CertificateValidatorFactory as PhlexaCertificateValidatorFactory;
-use Zend\Diactoros\ServerRequestFactory;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\Diactoros\ServerRequestFactory;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Class CertificateValidatorFactory
  *
- * @package PhlexaExpressive\Request\Certificate
+ * @package PhlexaMezzio\Request\Certificate
  */
 class CertificateValidatorFactory implements FactoryInterface
 {
