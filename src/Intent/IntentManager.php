@@ -21,6 +21,8 @@ use Phlexa\Intent\CancelIntent;
 use Phlexa\Intent\HelpIntent;
 use Phlexa\Intent\IntentInterface;
 use Phlexa\Intent\LaunchIntent;
+use Phlexa\Intent\SessionEndedIntent;
+use Phlexa\Intent\SessionEndedRequest;
 use Phlexa\Intent\StopIntent;
 use Phlexa\Intent\System\ExceptionEncountered;
 use Phlexa\Request\RequestType\LaunchRequestType;
@@ -41,7 +43,7 @@ class IntentManager extends AbstractPluginManager
     protected $aliases
         = [
             LaunchRequestType::NAME            => LaunchIntent::class,
-            SessionEndedRequestType::NAME      => StopIntent::class,
+            SessionEndedRequestType::NAME      => SessionEndedIntent::class,
             HelpIntent::NAME                   => HelpIntent::class,
             StopIntent::NAME                   => StopIntent::class,
             CancelIntent::NAME                 => CancelIntent::class,
@@ -63,6 +65,7 @@ class IntentManager extends AbstractPluginManager
             PlaybackStartedIntent::class        => AbstractIntentFactory::class,
             PlaybackStoppedIntent::class        => AbstractIntentFactory::class,
             ExceptionEncountered::class         => AbstractIntentFactory::class,
+            SessionEndedIntent::class           => AbstractIntentFactory::class
         ];
 
     /**
