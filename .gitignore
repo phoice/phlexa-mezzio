@@ -2,3 +2,7 @@
 html
 vendor
 phpunit.xml
+.idea/modules.xml
+.idea/phlexa-mezzio.iml
+.idea/php.xml
+.idea/vcs.xml

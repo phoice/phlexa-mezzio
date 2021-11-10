@@ -57,6 +57,17 @@ class AbstractIntentFactory implements FactoryInterface
         /** @var AbstractIntent $intent */
         $intent = new $requestedName($alexaRequest, $alexaResponse, $textHelper, $skillConfiguration);
 
+        $config = $container->get('config');
+
+        $errorFlag = false;
+
+        if (isset($config['phlexa'])) {
+            if (isset($config['phlexa']['log_errors'])) {
+                $errorFlag = $config['phlexa']['log_errors'];
+            }
+        }
+        $intent->setErrorLogFlag($errorFlag);
+
         return $intent;
     }
 }
