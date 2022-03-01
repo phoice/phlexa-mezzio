@@ -25,6 +25,7 @@ use Phlexa\Intent\SessionEndedIntent;
 use Phlexa\Intent\SessionEndedRequest;
 use Phlexa\Intent\StopIntent;
 use Phlexa\Intent\System\ExceptionEncountered;
+use Phlexa\Request\RequestType\AvailabilityCheckRequestType;
 use Phlexa\Request\RequestType\LaunchRequestType;
 use Phlexa\Request\RequestType\SessionEndedRequestType;
 use Laminas\ServiceManager\AbstractPluginManager;
@@ -52,6 +53,7 @@ class IntentManager extends AbstractPluginManager
             PlaybackStartedIntent::NAME        => PlaybackStartedIntent::class,
             PlaybackStoppedIntent::NAME        => PlaybackStoppedIntent::class,
             ExceptionEncountered::NAME         => ExceptionEncountered::class,
+            AvailabilityCheckRequestType::NAME => StopIntent::class,
         ];
 
     protected $factories
