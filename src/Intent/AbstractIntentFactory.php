@@ -60,13 +60,18 @@ class AbstractIntentFactory implements FactoryInterface
         $config = $container->get('config');
 
         $errorFlag = false;
+        $errorPath = '';
 
         if (isset($config['phlexa'])) {
             if (isset($config['phlexa']['log_errors'])) {
                 $errorFlag = $config['phlexa']['log_errors'];
             }
+            if (isset($config['phlexa']['error_dir'])) {
+                $errorPath = $config['phlexa']['error_dir'];
+            }
         }
         $intent->setErrorLogFlag($errorFlag);
+        $intent->setErrorPath($errorPath);
 
         return $intent;
     }
