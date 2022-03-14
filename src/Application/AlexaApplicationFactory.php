@@ -49,7 +49,9 @@ class AlexaApplicationFactory implements FactoryInterface
 
         /** @var AlexaApplication $alexaApplication */
         $alexaApplication = new $requestedName(
-            $alexaRequest, $alexaResponse, $intentManager
+            $alexaRequest,
+            $alexaResponse,
+            $intentManager
         );
 
         return $alexaApplication;
