@@ -13,7 +13,7 @@ your applications.
 
 ## Dependencies
 
-* PHP 7
+* PHP 8.1
 * https://github.com/php-fig/http-message-util
 * https://github.com/http-interop/http-middleware
 * https://github.com/php-fig/container
