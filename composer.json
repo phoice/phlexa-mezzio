@@ -45,6 +45,6 @@
         "cs-check": "phpcs src/",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-html html/coverage/",
-        "sniffer:php8": "phpcs -p ./ --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.1"
+        "sniffer:php8": "phpcs -p ./src --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.1"
     }
 }
