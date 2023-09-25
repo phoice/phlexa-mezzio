@@ -10,17 +10,11 @@
             "laminas/laminas-dependency-plugin": true
         }
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/abraxa1982/phlexa"
-        }
-    ],
     "minimum-stability": "beta",
     "require": {
         "php": "^8.1",
         "fig/http-message-util": "^1.1",
-        "phoice/phlexa": "dev-php8",
+        "phoice/phlexa": "^4.0",
         "psr/http-message": "^1.0",
         "psr/http-server-middleware": "^1.0",
         "mezzio/mezzio-router": "^3.0",
