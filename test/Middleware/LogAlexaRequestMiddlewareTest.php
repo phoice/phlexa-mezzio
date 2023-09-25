@@ -15,6 +15,7 @@ namespace PhlexaMezzioTest\Middleware;
 
 use Fig\Http\Message\RequestMethodInterface;
 use PhlexaMezzio\Middleware\LogAlexaRequestMiddleware;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -35,25 +36,25 @@ class LogAlexaRequestMiddlewareTest extends TestCase
      */
     public function testWithGetRequest(): void
     {
-        /** @var ServerRequestInterface|ObjectProphecy $request */
-        $request = $this->prophesize(ServerRequestInterface::class);
+        /** @var ServerRequestInterface|MockObject $request */
+        $request = $this->createMock(ServerRequestInterface::class);
 
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $request->getMethod();
-        $getMethod->shouldBeCalled()->willReturn(
+        $request->expects($this->once())
+        ->method('getMethod')
+        ->willReturn(
             RequestMethodInterface::METHOD_GET
         );
 
-        /** @var ResponseInterface|ObjectProphecy $response */
-        $response = $this->prophesize(ResponseInterface::class)->reveal();
+        /** @var ResponseInterface|MockObject $response */
+        $response = $this->createMock(ResponseInterface::class);
 
         /** @var RequestHandlerInterface|ObjectProphecy $handler */
-        $handler = $this->prophesize(RequestHandlerInterface::class);
-        $handler->handle($request->reveal())->willReturn($response);
+        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler->expects($this->any())->method('handle')->with($request)->willReturn($response);
 
         $middleware = new LogAlexaRequestMiddleware();
 
-        $result = $middleware->process($request->reveal(), $handler->reveal());
+        $result = $middleware->process($request, $handler);
 
         $this->assertSame($response, $result);
     }
@@ -83,29 +84,31 @@ class LogAlexaRequestMiddlewareTest extends TestCase
             ],
         ];
 
-        /** @var ServerRequestInterface|ObjectProphecy $request */
-        $request = $this->prophesize(ServerRequestInterface::class);
+        /** @var ServerRequestInterface|MockObject $request */
+        $request = $this->createMock(ServerRequestInterface::class);
 
-        /** @var MethodProphecy $getMethod */
-        $getMethod = $request->getMethod();
-        $getMethod->shouldBeCalled()->willReturn(
-            RequestMethodInterface::METHOD_POST
-        );
+        $request->expects($this->once())
+            ->method('getMethod')
+            ->willReturn(
+                RequestMethodInterface::METHOD_POST
+            );
 
-        /** @var MethodProphecy|StreamInterface $getHeaderMethod1 */
-        $getHeaderMethod1 = $request->getHeaderLine('signaturecertchainurl');
-        $getHeaderMethod1->shouldBeCalled()->willReturn(['foo']);
+        $request->expects($this->any())
+            ->method('getHeaderLine')
+            ->with('signaturecertchainurl')
+            ->willReturn(['foo']);
 
-        /** @var ResponseInterface|ObjectProphecy $response */
-        $response = $this->prophesize(ResponseInterface::class)->reveal();
+        /** @var ResponseInterface|MockObject $response */
+        $response = $this->createMock(ResponseInterface::class);
 
-        /** @var RequestHandlerInterface|ObjectProphecy $handler */
-        $handler = $this->prophesize(RequestHandlerInterface::class);
-        $handler->handle($request->reveal())->willReturn($response);
+        /** @var RequestHandlerInterface|MockObject $handler */
+        $handler = $this->createMock(RequestHandlerInterface::class);
+        $handler->expects($this->any())
+            ->method('handle')->with($request)->willReturn($response);
 
         $middleware = new LogAlexaRequestMiddleware();
 
-        $result = $middleware->process($request->reveal(), $handler->reveal());
+        $result = $middleware->process($request, $handler);
 
         $this->assertEquals($response, $result);
     }
