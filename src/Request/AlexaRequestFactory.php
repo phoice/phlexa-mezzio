@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace PhlexaMezzio\Request;
 
 use Exception;
-use Interop\Container\ContainerInterface;
+use \Psr\Container\ContainerInterface;
 use Phlexa\Request\AlexaRequest;
 use Phlexa\Request\RequestType\RequestTypeFactory;
 use Laminas\Diactoros\ServerRequestFactory;
@@ -38,17 +38,19 @@ class AlexaRequestFactory implements FactoryInterface
     {
         $serverRequest = ServerRequestFactory::fromGlobals();
 
-        if (empty($serverRequest->getBody()->getContents())) {
+        $content = $serverRequest->getBody()->getContents();
+
+        if (empty($content)) {
             return null;
         }
 
-        if (!$this->isJson($serverRequest->getBody()->getContents())) {
+        if (!$this->isJson($content)) {
             return null;
         }
 
         /** @var AlexaRequest $alexaRequest */
         $alexaRequest = RequestTypeFactory::createFromData(
-            $serverRequest->getBody()->getContents()
+            $content
         );
 
         return $alexaRequest;
